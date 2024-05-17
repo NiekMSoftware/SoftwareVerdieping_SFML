@@ -20,7 +20,11 @@ void Application::LoadResources()
 {
 	// First load in the textures.
 	printf("\nApplication::LoadResources - Textures:\n");
-	mTextures.Load(Textures::Title, "Engine/assets/koseki_bijou.png");
+	mTextures.Load(Textures::Title, "Engine/assets/textures/koseki_bijou.png");
+
+	// Load in the font
+	printf("\n");
+	mFontHolder.Load(Fonts::Default, "Engine/assets/fonts/pixelFont.ttf");
 }
 
 void Application::RegisterStates()

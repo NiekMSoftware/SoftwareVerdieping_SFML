@@ -1,5 +1,7 @@
 ﻿#pragma once
+
 #include "GameStates/State.h"
+#include <SFML/Graphics.hpp>
 
 class TitleState : public State
 {
@@ -11,10 +13,13 @@ public:
 	bool HandleEvent(const sf::Event& event) override;
 
 private:
-	// sf::Sprite mBackgroundSprite;
-	// sf::Text mTitleText;
-	// sf::Text mText;
-	//
+	void LoadResources(const Context& context);
+
+private:
+	sf::Sprite mBackgroundSprite;
+	sf::Text mTitleText;
+	sf::Text mText;
+	
 	sf::View mWorldView;
 	sf::FloatRect mWorldBounds;
 	

@@ -43,10 +43,10 @@ public:
 
 
 	// Retrieves a mutable reference to a resource by its identifier.
-	Resource& get(Identifier id);
+	Resource& Get(Identifier id);
 
 	// Retrieves a constant reference to a resource by its identifier.
-	const Resource& get(Identifier id) const;
+	const Resource& Get(Identifier id) const;
 
 private:
 	// Map to store resources associated with their identifiers.
@@ -84,7 +84,7 @@ void ResourceHolder<Resource, Identifier>::Load(Identifier id, const std::string
 }
 
 template <typename Resource, typename Identifier>
-Resource& ResourceHolder<Resource, Identifier>::get(Identifier id)
+Resource& ResourceHolder<Resource, Identifier>::Get(Identifier id)
 {
 	// Find the resource with the id
 	auto found = mResourceMap.find(id);
@@ -95,7 +95,7 @@ Resource& ResourceHolder<Resource, Identifier>::get(Identifier id)
 }
 
 template <typename Resource, typename Identifier>
-const Resource& ResourceHolder<Resource, Identifier>::get(Identifier id) const
+const Resource& ResourceHolder<Resource, Identifier>::Get(Identifier id) const
 {
 	// Find the resource with the id
 	auto found = mResourceMap.find(id);
