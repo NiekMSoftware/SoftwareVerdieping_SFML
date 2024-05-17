@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "GameStates/StateStack.hpp"
+
 class Application
 {
 public:
@@ -13,10 +15,13 @@ private:
 	void Update(sf::Time deltaTime);
 	void Display();
 
+	void RegisterStates();
+	
 private:
 	// SFML Callbacks
 	sf::RenderWindow mWindow;
 	sf::Time TimePerFrame;
 
-	// TODO: Create a StateStack class to manage the states of the game.
+	// The Stack of States for the application.
+	StateStack mStateStack;
 };

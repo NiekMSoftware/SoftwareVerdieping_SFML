@@ -1,9 +1,24 @@
-﻿#include "../lib/Application.hpp"
+﻿#include <Application.hpp>
+
+// State inclusions
+#include "GameStates/States/TitleState.h"
 
 Application::Application()
-: mWindow(sf::VideoMode(800, 600), "Pong"),
-TimePerFrame(sf::seconds(1.f / 60))
-{ }
+: mWindow(sf::VideoMode(640, 480), "Pong"),
+TimePerFrame(sf::seconds(1.f / 60)),
+mStateStack(State::Context(mWindow))
+{
+	RegisterStates();
+
+	// Push in the Title State
+	mStateStack.PushState(States::Title);
+	mStateStack.ApplyPendingChanges();
+}
+
+void Application::RegisterStates()
+{
+	mStateStack.RegisterState<TitleState>(States::Title);	
+}
 
 void Application::Run()
 {
@@ -27,6 +42,10 @@ void Application::Run()
 
 		// Display the game.
 		Display();
+
+		// Close once the stack is empty
+		if (mStateStack.IsEmpty())
+			mWindow.close();
 	}
 }
 
@@ -36,20 +55,19 @@ void Application::ProcessInput()
 
 	while(mWindow.pollEvent(event))
 	{
-		// close the window if that is being called
-		if (event.type == sf::Event::Closed)
-			mWindow.close();
+		// Let the Stack handle any events.
+		mStateStack.HandleEvent(event);
 	}
 }
 
 void Application::Update(sf::Time deltaTime)
 {
-	// nothing to update yet
+	// Update the Stack.
+	mStateStack.Update(deltaTime);
 }
 
 void Application::Display()
 {
-	mWindow.clear();
-
-	mWindow.display();
+	// Display the Stack.
+	mStateStack.Display();
 }
