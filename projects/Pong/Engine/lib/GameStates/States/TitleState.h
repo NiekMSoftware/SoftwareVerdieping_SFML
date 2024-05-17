@@ -4,7 +4,7 @@
 class TitleState : public State
 {
 public:
-	TitleState(StateStack& stack, Context context);
+	TitleState(StateStack& stack, const Context& context);
 
 	void Draw() const override;
 	bool Update(sf::Time dt) override;

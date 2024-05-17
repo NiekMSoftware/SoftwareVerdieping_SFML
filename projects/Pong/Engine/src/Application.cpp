@@ -6,13 +6,21 @@
 Application::Application()
 : mWindow(sf::VideoMode(640, 480), "Pong"),
 TimePerFrame(sf::seconds(1.f / 60)),
-mStateStack(State::Context(mWindow))
+mStateStack(State::Context(mWindow, mTextures, mFontHolder))
 {
+	LoadResources();
 	RegisterStates();
 
 	// Push in the Title State
 	mStateStack.PushState(States::Title);
 	mStateStack.ApplyPendingChanges();
+}
+
+void Application::LoadResources()
+{
+	// First load in the textures.
+	printf("\nApplication::LoadResources - Textures:\n");
+	mTextures.Load(Textures::Title, "Engine/assets/koseki_bijou.png");
 }
 
 void Application::RegisterStates()

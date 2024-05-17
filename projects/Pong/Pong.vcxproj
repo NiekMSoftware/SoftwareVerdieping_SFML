@@ -252,6 +252,8 @@
     <ClInclude Include="Engine\lib\GameStates\StateIdentifiers.inl" />
     <ClInclude Include="Engine\lib\GameStates\StateStack.hpp" />
     <ClInclude Include="Engine\lib\GameStates\States\TitleState.h" />
+    <ClInclude Include="Engine\lib\ResourceHolder.hpp" />
+    <ClInclude Include="Engine\lib\ResourceIdentifiers.inl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Engine\assets\" />
