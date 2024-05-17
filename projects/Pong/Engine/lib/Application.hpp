@@ -11,6 +11,8 @@ public:
 	void Run();
 
 private:
+	void LoadResources();
+	
 	void ProcessInput();
 	void Update(sf::Time deltaTime);
 	void Display();
@@ -24,4 +26,8 @@ private:
 
 	// The Stack of States for the application.
 	StateStack mStateStack;
+
+	// The resources of the game
+	TextureHolder mTextures;
+	FontHolder mFontHolder;
 };

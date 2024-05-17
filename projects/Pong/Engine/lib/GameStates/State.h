@@ -2,6 +2,7 @@
 #include <memory>
 #include <SFML/Graphics/RenderWindow.hpp>
 
+#include "ResourceIdentifiers.inl"
 #include "StateIdentifiers.inl"
 
 class StateStack;
@@ -20,13 +21,17 @@ public:
 		/// \param window The window of the State.
 		/// 
 		/////////////////////////////////////////////////////
-		Context(sf::RenderWindow& window)
-		: window(&window)
+		Context(sf::RenderWindow& window, TextureHolder& textures, FontHolder& fonts)
+		: window(&window),
+		textures(&textures),
+		fonts(&fonts)
 		{
-			printf("Instantiated Context.");
+			printf("Instantiated Context.\n");
 		}
 
 		sf::RenderWindow* window;
+		TextureHolder* textures;
+		FontHolder* fonts;
 	};
 
 public:
