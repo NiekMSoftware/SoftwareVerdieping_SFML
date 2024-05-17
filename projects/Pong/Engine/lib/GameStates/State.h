@@ -19,12 +19,16 @@ public:
 		/// Constructor of Context, this constructs all the context the states would need.
 		///
 		/// \param window The window of the State.
+		///	\param textures The textures of the States.
+		///	\param fonts The fonts the States would need.
+		///	\param paused Flag to check if the State's context is paused.
 		/// 
 		/////////////////////////////////////////////////////
-		Context(sf::RenderWindow& window, TextureHolder& textures, FontHolder& fonts)
+		Context(sf::RenderWindow& window, TextureHolder& textures, FontHolder& fonts, bool& paused)
 		: window(&window),
 		textures(&textures),
-		fonts(&fonts)
+		fonts(&fonts),
+		paused(&paused)
 		{
 			printf("Instantiated Context.\n");
 		}
@@ -32,6 +36,8 @@ public:
 		sf::RenderWindow* window;
 		TextureHolder* textures;
 		FontHolder* fonts;
+
+		bool* paused;
 	};
 
 public:
@@ -48,6 +54,8 @@ protected:
 	void RequestStateClear();
 
 	Context GetContext() const;
+
+	bool mIsPaused = false;
 
 private:
 	StateStack* mStack;

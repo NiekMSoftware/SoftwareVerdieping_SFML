@@ -2,7 +2,8 @@
 #include "GameStates/StateStack.hpp"
 
 State::State(StateStack& stack, const Context& context)
-: mStack(&stack),
+: mIsPaused(*context.paused),
+mStack(&stack),
 mContext(context)
 { }
 State::~State() = default;

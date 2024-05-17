@@ -8,7 +8,7 @@ mWorldView(context.window->getDefaultView()),
 mWorldBounds(0.f, 0.f, mWorldView.getSize().x, mWorldView.getSize().y),
 mShowText(true)
 {
-	printf("\nCreated the Title!\n");
+	// Load in the resources
 	LoadResources(context);
 }
 
@@ -31,7 +31,7 @@ void TitleState::LoadResources(const Context& context)
 
 	// Set up the title text
 	mTitleText.setFont(font);
-	mTitleText.setString("Koseki Pongjou");
+	mTitleText.setString("Pongseki Bibounce");
 	mTitleText.setOutlineColor(sf::Color::Black);
 	mTitleText.setOutlineThickness(2.f);
 	mTitleText.setCharacterSize(48);
@@ -84,7 +84,7 @@ bool TitleState::HandleEvent(const sf::Event& event)
 	if (event.type == sf::Event::KeyPressed)
 	{
 		RequestStackPop();
-		// TODO: Request a new Push of State
+		RequestStackPush(States::Game);
 		return false;
 	}
 

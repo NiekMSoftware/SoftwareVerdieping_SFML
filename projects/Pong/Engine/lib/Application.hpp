@@ -30,4 +30,7 @@ private:
 	// The resources of the game
 	TextureHolder mTextures;
 	FontHolder mFontHolder;
+
+	// Boolean to take as reference
+	bool mPaused;
 };

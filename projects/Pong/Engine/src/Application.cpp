@@ -1,13 +1,16 @@
 ﻿#include <Application.hpp>
 
 // State inclusions
+#include "GameStates/States/GameState.h"
 #include "GameStates/States/TitleState.h"
 
 Application::Application()
 : mWindow(sf::VideoMode(640, 480), "Pong"),
 TimePerFrame(sf::seconds(1.f / 60)),
-mStateStack(State::Context(mWindow, mTextures, mFontHolder))
+mStateStack(State::Context(mWindow, mTextures, mFontHolder, mPaused)),
+mPaused(false)
 {
+	// Load in the resources and register all states.
 	LoadResources();
 	RegisterStates();
 
@@ -29,7 +32,8 @@ void Application::LoadResources()
 
 void Application::RegisterStates()
 {
-	mStateStack.RegisterState<TitleState>(States::Title);	
+	mStateStack.RegisterState<TitleState>(States::Title);
+	mStateStack.RegisterState<GameState>(States::Game);
 }
 
 void Application::Run()
