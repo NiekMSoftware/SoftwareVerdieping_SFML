@@ -14,4 +14,7 @@ public:
 
 private:
 	void HandleInput(const sf::Event& event);
+
+private:
+	sf::Keyboard::Key mLastKeyPressed = sf::Keyboard::Unknown;
 };

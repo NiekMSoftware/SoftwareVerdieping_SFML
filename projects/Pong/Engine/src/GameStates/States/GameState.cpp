@@ -39,14 +39,17 @@ bool GameState::HandleEvent(const sf::Event& event)
 
 void GameState::HandleInput(const sf::Event& event)
 {
-	// TODO: Save the last pressed key to avoid an immediate pause once player presses ESC in the Title
-	
 	// Handle input of keys being pressed
 	if (event.type == sf::Event::KeyPressed)
 	{
-		if (sf::Keyboard::Escape)
+		mLastKeyPressed = event.key.code;
+
+		// Check if the last key that has been pressed is the Escape key.
+		if (mLastKeyPressed == sf::Keyboard::Escape)
 		{
+			// pause the game and push in the pause state.
 			mIsPaused = true;
+			
 			// push in the pause state
 		}
 	}
