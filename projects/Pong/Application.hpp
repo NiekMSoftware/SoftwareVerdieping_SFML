@@ -2,7 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "ResourceIdentifiers.inl"
 #include "GameStates/StateStack.hpp"
 
 class Application

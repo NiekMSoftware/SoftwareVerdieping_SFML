@@ -85,15 +85,15 @@ void StateStack::ApplyPendingChanges()
 		{
 			case Push:
 				mStack.push_back(CreateState(change.stateID));
-				break;
+			break;
 			
 			case Pop:
 				mStack.pop_back();
-				break;
+			break;
 			
 			case Clear:
 				mStack.clear();
-				break;
+			break;
 		}
 	}
 
