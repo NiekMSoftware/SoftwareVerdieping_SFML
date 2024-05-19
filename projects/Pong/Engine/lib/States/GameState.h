@@ -11,5 +11,8 @@ public:
 	bool Update(sf::Time dt) override;
 	bool FixedUpdate(sf::Time fixedDt) override;
 	bool HandleEvent(const sf::Event& event) override;
+
+private:
+	sf::Keyboard::Key mLastKeyPressed = sf::Keyboard::Unknown;
 };
 
