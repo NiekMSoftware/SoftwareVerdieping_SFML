@@ -1,4 +1,4 @@
-﻿#include "../lib/Application.h"
+#include "../lib/Application.hpp"
 
 Application::Application()
 : mWindow(sf::VideoMode(800, 600), "Pong"),
