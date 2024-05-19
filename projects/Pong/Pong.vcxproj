@@ -142,6 +142,7 @@
     <ClCompile Include="Engine\src\Application.cpp" />
     <ClCompile Include="Engine\src\States\State.cpp" />
     <ClCompile Include="Engine\src\States\StateStack.cpp" />
+    <ClCompile Include="Engine\src\States\GameState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Engine\src\States\TitleState.cpp" />
   </ItemGroup>
@@ -153,6 +154,7 @@
     <ClInclude Include="Engine\lib\States\StateIndentifier.inl" />
     <ClInclude Include="Engine\lib\States\StateStack.hpp" />
     <ClInclude Include="Engine\lib\States\TitleState.h" />
+    <ClInclude Include="Engine\lib\States\GameState.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Engine\assets\fonts\pixel.ttf" />

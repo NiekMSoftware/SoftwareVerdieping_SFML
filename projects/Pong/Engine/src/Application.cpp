@@ -1,6 +1,7 @@
 #include "../lib/Application.hpp"
 
 #include "States/TitleState.h"
+#include "States/GameState.h"
 
 Application::Application()
 : mWindow(sf::VideoMode(800, 600), "Pong"),
@@ -26,8 +27,8 @@ void Application::LoadTextures()
 
 void Application::RegisterStates()
 {
-	// TODO: Register any states.
 	mStateStack.RegisterState<TitleState>(States::TITLE);
+	mStateStack.RegisterState<GameState>(States::GAME);
 }
 
 void Application::Run()

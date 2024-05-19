@@ -18,6 +18,13 @@ bool TitleState::FixedUpdate(sf::Time fixedDt)
 
 bool TitleState::HandleEvent(const sf::Event& event) 
 {
+	if (event.type == sf::Event::KeyPressed)
+	{
+		RequestStackPush(States::GAME);
+		RequestStackPop();
+		return false;
+	}
+	
 	if (event.type == sf::Event::Closed)
 	{
 		RequestStateClear();
