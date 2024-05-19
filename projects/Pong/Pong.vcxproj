@@ -144,6 +144,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\lib\Application.hpp" />
+    <ClInclude Include="Engine\lib\ResourceHolder.hpp" />
+    <ClInclude Include="Engine\lib\ResourceIdentifiers.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
