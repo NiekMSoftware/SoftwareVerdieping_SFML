@@ -1,9 +1,11 @@
 ﻿#pragma once
 #include <memory>
-#include <SFML/Graphics/RenderWindow.hpp>
+
+#include <SFML/Graphics.hpp>
 
 #include "ResourceIdentifiers.inl"
 #include "StateIndentifier.inl"
+
 
 class StateStack;
 

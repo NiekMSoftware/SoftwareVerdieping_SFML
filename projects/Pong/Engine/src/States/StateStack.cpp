@@ -67,6 +67,8 @@ void StateStack::HandleEvent(const sf::Event& event)
 		if (!(*itr)->HandleEvent(event))
 			return;
 	}
+
+	ApplyPendingChanges();
 }
 
 void StateStack::PushState(States::Id stateID)

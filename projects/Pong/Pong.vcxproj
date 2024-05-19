@@ -143,6 +143,7 @@
     <ClCompile Include="Engine\src\States\State.cpp" />
     <ClCompile Include="Engine\src\States\StateStack.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Engine\src\States\TitleState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\lib\Application.hpp" />
@@ -151,6 +152,13 @@
     <ClInclude Include="Engine\lib\States\State.hpp" />
     <ClInclude Include="Engine\lib\States\StateIndentifier.inl" />
     <ClInclude Include="Engine\lib\States\StateStack.hpp" />
+    <ClInclude Include="Engine\lib\States\TitleState.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Engine\assets\fonts\pixel.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Engine\assets\textures\default_texture.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

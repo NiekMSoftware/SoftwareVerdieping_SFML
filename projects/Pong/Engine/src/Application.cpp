@@ -1,5 +1,7 @@
 #include "../lib/Application.hpp"
 
+#include "States/TitleState.h"
+
 Application::Application()
 : mWindow(sf::VideoMode(800, 600), "Pong"),
 mTimePerFrame(sf::seconds(1.f / 60)),
@@ -8,6 +10,9 @@ mIsPaused(false)
 {
 	RegisterStates();
 	LoadTextures();
+
+	mStateStack.PushState(States::TITLE);
+	mStateStack.ApplyPendingChanges();
 }
 
 void Application::LoadTextures()
@@ -22,6 +27,7 @@ void Application::LoadTextures()
 void Application::RegisterStates()
 {
 	// TODO: Register any states.
+	mStateStack.RegisterState<TitleState>(States::TITLE);
 }
 
 void Application::Run()
@@ -35,7 +41,7 @@ void Application::Run()
 	sf::Time timeSinceLastFixedUpdate =  sf::Time::Zero;
 	
 	// Keep running whilst the Window is active.
-	while (mWindow.isOpen())
+	while (mWindow.isOpen() && !mStateStack.IsEmpty())
 	{
 		// Handle any incoming events.
 		HandleEvents();
