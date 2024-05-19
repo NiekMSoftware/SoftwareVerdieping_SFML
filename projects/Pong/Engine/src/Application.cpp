@@ -2,8 +2,20 @@
 
 Application::Application()
 : mWindow(sf::VideoMode(800, 600), "Pong"),
-TimePerFrame(sf::seconds(1.f / 60))
-{ }
+mTimePerFrame(sf::seconds(1.f / 60))
+{
+	LoadTextures();
+}
+
+void Application::LoadTextures()
+{
+	// Load in the textures
+	mTextureHolder.Load(Textures::DEFAULT, "Engine/assets/textures/default_texture.png");
+
+	// Load in the fonts
+	mFontHolder.Load(Fonts::DEFAULT, "Engine/assets/fonts/pixel.ttf");
+}
+
 
 void Application::Run()
 {
@@ -31,13 +43,13 @@ void Application::Run()
 		timeSinceLastUpdate += elapsedTime;
 
 		// Calculate the Fixed Update interval
-		while (timeSinceLastFixedUpdate > TimePerFrame)
+		while (timeSinceLastFixedUpdate > mTimePerFrame)
 		{
 			// Update any fixed logic, typically used for Physics simulation or manipulation.
-			timeSinceLastFixedUpdate -= TimePerFrame;
+			timeSinceLastFixedUpdate -= mTimePerFrame;
 
 			// Update the Engine on a fixed interval.
-			FixedUpdate(TimePerFrame);
+			FixedUpdate(mTimePerFrame);
 		}
 
 		// Update the Engine with deltaTime
@@ -66,5 +78,7 @@ void Application::HandleEvents()
 
 void Application::Display()
 {
+	mWindow.clear();
 	
+	mWindow.display();
 }
