@@ -33,5 +33,5 @@ private:
 	TextureHolder mTextureHolder; //!< The resource holder of the textures of the engine.
 	FontHolder mFontHolder; //!< The resource holder of the Fonts of the engine.
 
-	bool mIsPaused;
+	bool mIsPaused; //!< Flag to pause the game.
 };
