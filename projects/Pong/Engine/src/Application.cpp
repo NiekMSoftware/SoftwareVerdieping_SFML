@@ -36,11 +36,11 @@ void Application::Run()
 			// Update any fixed logic, typically used for Physics simulation or manipulation.
 			timeSinceLastFixedUpdate -= TimePerFrame;
 
-			// Update the Physics Engine
+			// Update the Engine on a fixed interval.
 			FixedUpdate(TimePerFrame);
 		}
 
-		// Update the game
+		// Update the Engine with deltaTime
 		Update(timeSinceLastUpdate);
 		timeSinceLastUpdate = sf::Time::Zero;
 
