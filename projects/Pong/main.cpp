@@ -1,19 +1,18 @@
-#include <SFML/Graphics.hpp>
+#include "Engine/lib/Application.h"
+#include <iostream>
 
 int main(int argc, char* argv[])
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Pong");
-
-    while (window.isOpen())
+    try
     {
-        sf::Event event;
-
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+        Application app;
+        app.Run();
+    }
+    catch(std::exception& exception)
+    {
+        std::cout << "Failed to run app: " << exception.what();
+        return EXIT_FAILURE;
     }
     
-    return 0;
+    return EXIT_SUCCESS;
 }
