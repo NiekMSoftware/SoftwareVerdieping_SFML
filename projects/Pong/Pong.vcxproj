@@ -71,10 +71,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\include;$(IncludePath); $(ProjectDir)\Engine\lib;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\include;$(IncludePath);$(ProjectDir)\Engine\lib;</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include;$(ProjectDir)\Engine\lib;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include;$(ProjectDir)\Engine\lib;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,12 +140,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Application.cpp" />
+    <ClCompile Include="Engine\src\States\State.cpp" />
+    <ClCompile Include="Engine\src\States\StateStack.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\lib\Application.hpp" />
     <ClInclude Include="Engine\lib\ResourceHolder.hpp" />
     <ClInclude Include="Engine\lib\ResourceIdentifiers.inl" />
+    <ClInclude Include="Engine\lib\States\State.hpp" />
+    <ClInclude Include="Engine\lib\States\StateIndentifier.inl" />
+    <ClInclude Include="Engine\lib\States\StateStack.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

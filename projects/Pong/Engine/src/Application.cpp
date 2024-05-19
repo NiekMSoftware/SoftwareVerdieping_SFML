@@ -2,8 +2,11 @@
 
 Application::Application()
 : mWindow(sf::VideoMode(800, 600), "Pong"),
-mTimePerFrame(sf::seconds(1.f / 60))
+mTimePerFrame(sf::seconds(1.f / 60)),
+mStateStack(State::Context(mWindow, mTextureHolder, mFontHolder, mIsPaused)),
+mIsPaused(false)
 {
+	RegisterStates();
 	LoadTextures();
 }
 
@@ -16,6 +19,10 @@ void Application::LoadTextures()
 	mFontHolder.Load(Fonts::DEFAULT, "Engine/assets/fonts/pixel.ttf");
 }
 
+void Application::RegisterStates()
+{
+	// TODO: Register any states.
+}
 
 void Application::Run()
 {
@@ -63,22 +70,25 @@ void Application::Run()
 
 void Application::Update(sf::Time deltaTime)
 {
-	
+	mStateStack.Update(deltaTime);
 }
 
 void Application::FixedUpdate(sf::Time fixedDeltaTime)
 {
-	
+	mStateStack.FixedUpdate(fixedDeltaTime);
 }
 
 void Application::HandleEvents()
 {
-	
+	sf::Event event;
+
+	while (mWindow.pollEvent(event))
+	{
+		mStateStack.HandleEvent(event);
+	}
 }
 
 void Application::Display()
 {
-	mWindow.clear();
-	
-	mWindow.display();
+	mStateStack.Display();
 }
