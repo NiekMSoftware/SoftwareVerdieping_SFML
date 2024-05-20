@@ -16,6 +16,16 @@ namespace GUI
 		mText.setString(text);
 	}
 
+	sf::Text& Label::GetText()
+	{
+		return mText;
+	}
+
+	void Label::SetSize(unsigned int size)
+	{
+		mText.setCharacterSize(size);	
+	}
+
 	void Label::HandleEvent(const sf::Event& event)
 	{ }
 

@@ -69,13 +69,13 @@ namespace GUI
 			return;
 
 		// search next component that is selectable
-		int prev = mSelectedChild;
+		int next = mSelectedChild;
 		do
 		{
-			prev = (prev + static_cast<int>(mChildren.size()) - 1) % static_cast<int>(mChildren.size());
-		} while (!mChildren[prev]->IsSelectable());
+			next = (next + 1) % static_cast<int>(mChildren.size());
+		} while (!mChildren[next]->IsSelectable());
 
-		Select(prev);
+		Select(next);
 	}
 
 	void Container::SelectPrevious()
@@ -84,13 +84,13 @@ namespace GUI
 			return;
 
 		// search next component that is selectable
-		int next = mSelectedChild;
+		int prev = mSelectedChild;
 		do
 		{
-			next = (next + 1) % static_cast<int>(mChildren.size());
-		} while (!mChildren[next]->IsSelectable());
+			prev = (prev + static_cast<int>(mChildren.size()) - 1) % static_cast<int>(mChildren.size());
+		} while (!mChildren[prev]->IsSelectable());
 
-		Select(next);
+		Select(prev);
 	}
 
 	bool Container::HasSelection() const

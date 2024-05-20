@@ -165,6 +165,7 @@
     <ClInclude Include="Engine\lib\States\StateStack.hpp" />
     <ClInclude Include="Engine\lib\States\TitleState.h" />
     <ClInclude Include="Engine\lib\States\GameState.h" />
+    <ClInclude Include="Engine\lib\Utility.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Engine\assets\fonts\pixel.ttf" />

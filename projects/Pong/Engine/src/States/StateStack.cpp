@@ -26,9 +26,6 @@ void StateStack::Update(sf::Time dt)
 		if (!(*itr)->Update(dt))
 			return;
 	}
-
-	// Apply any pending changes
-	ApplyPendingChanges();
 }
 
 void StateStack::FixedUpdate(sf::Time fixedDeltaTime)
@@ -40,9 +37,6 @@ void StateStack::FixedUpdate(sf::Time fixedDeltaTime)
 		if (!(*itr)->FixedUpdate(fixedDeltaTime))
 			return;
 	}
-
-	// Apply any pending changes
-	ApplyPendingChanges();
 }
 
 void StateStack::Display()
@@ -67,8 +61,6 @@ void StateStack::HandleEvent(const sf::Event& event)
 		if (!(*itr)->HandleEvent(event))
 			return;
 	}
-
-	ApplyPendingChanges();
 }
 
 void StateStack::PushState(States::Id stateID)

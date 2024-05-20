@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "State.hpp"
 #include "GUI/Container.h"
+#include "GUI/Label.h"
 
 class PauseState : public State
 {
@@ -14,5 +15,6 @@ public:
 
 private:
 	sf::Text mPauseText;
-	GUI::Container mContainer;
+	GUI::Label mLabel;
+	GUI::Container mButtonContainer;
 };

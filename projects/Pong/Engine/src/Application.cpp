@@ -80,11 +80,17 @@ void Application::Run()
 void Application::Update(sf::Time deltaTime)
 {
 	mStateStack.Update(deltaTime);
+
+	// Apply any pending changes if applicable.
+	mStateStack.ApplyPendingChanges();
 }
 
 void Application::FixedUpdate(sf::Time fixedDeltaTime)
 {
 	mStateStack.FixedUpdate(fixedDeltaTime);
+
+	// Apply any pending changes if applicable.
+	mStateStack.ApplyPendingChanges();
 }
 
 void Application::HandleEvents()
@@ -94,6 +100,9 @@ void Application::HandleEvents()
 	while (mWindow.pollEvent(event))
 	{
 		mStateStack.HandleEvent(event);
+
+		// Apply any pending changes if applicable.
+		mStateStack.ApplyPendingChanges();
 	}
 }
 

@@ -70,8 +70,6 @@ namespace GUI
 
 	void Button::Activate()
 	{
-		Component::Activate();
-
 		// If toggled we should show that the button is pressed.
 		if (mIsToggle)
 			mSprite.setTexture(mPressedTexture);
