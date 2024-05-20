@@ -5,7 +5,7 @@
 class TitleState : public State
 {
 public:
-	TitleState(StateStack& stack, Context& context);
+	TitleState(StateStack& stack, const Context& context);
 
 	bool Update(sf::Time dt) override;
 	bool FixedUpdate(sf::Time fixedDt) override;

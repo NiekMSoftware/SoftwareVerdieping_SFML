@@ -1,14 +1,13 @@
 #include "States/GameState.h"
 
-GameState::GameState(StateStack& stack, Context& context) 
-: State(stack, context)
+GameState::GameState(StateStack& stack, const Context& context)
+	: State(stack, context)
 {
-
 }
 
 void GameState::Draw() const
 {
-	GetContext().window->clear(sf::Color(34,44,55));
+	GetContext().window->clear(sf::Color(34, 44, 55));
 
 	// display this state only if the game isn't paused.
 	// this would ensure the pause state printing on top this state
@@ -16,18 +15,25 @@ void GameState::Draw() const
 		GetContext().window->display();
 }
 
-bool GameState::Update(sf::Time dt) 
+bool GameState::Update(sf::Time dt)
 {
+	if (mIsPaused) return false;
+
 	return true;
 }
 
-bool GameState::FixedUpdate(sf::Time fixedDt) 
+bool GameState::FixedUpdate(sf::Time fixedDt)
 {
+	if (mIsPaused) return false;
+
 	return true;
 }
 
-bool GameState::HandleEvent(const sf::Event& event) 
+bool GameState::HandleEvent(const sf::Event& event)
 {
+	// Don't handle anything once the game is paused
+	if (mIsPaused) return false;
+
 	if (event.type == sf::Event::KeyPressed)
 	{
 		mLastKeyPressed = event.key.code;
@@ -37,16 +43,15 @@ bool GameState::HandleEvent(const sf::Event& event)
 		{
 			// pause the game
 			mIsPaused = true;
-
-			// TODO: Push in the Paused State.
+			RequestStackPush(States::PAUSE);
 		}
 	}
-	
+
 	if (event.type == sf::Event::Closed)
 	{
 		RequestStateClear();
 		return false;
 	}
-	
+
 	return true;
 }

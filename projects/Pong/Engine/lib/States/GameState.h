@@ -5,7 +5,7 @@
 class GameState : public State
 {
 public:
-	GameState(StateStack& stack, Context& context);
+	GameState(StateStack& stack, const Context& context);
 
 	void Draw() const override;
 	bool Update(sf::Time dt) override;

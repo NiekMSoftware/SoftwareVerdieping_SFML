@@ -139,6 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\src\GUI\Button.cpp" />
+    <ClCompile Include="Engine\src\GUI\Component.cpp" />
+    <ClCompile Include="Engine\src\GUI\Container.cpp" />
+    <ClCompile Include="Engine\src\GUI\Label.cpp" />
+    <ClCompile Include="Engine\src\States\PauseState.cpp" />
     <ClCompile Include="Engine\src\Application.cpp" />
     <ClCompile Include="Engine\src\States\State.cpp" />
     <ClCompile Include="Engine\src\States\StateStack.cpp" />
@@ -147,9 +152,14 @@
     <ClCompile Include="Engine\src\States\TitleState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\lib\GUI\Button.h" />
+    <ClInclude Include="Engine\lib\GUI\Component.hpp" />
     <ClInclude Include="Engine\lib\Application.hpp" />
+    <ClInclude Include="Engine\lib\GUI\Container.h" />
+    <ClInclude Include="Engine\lib\GUI\Label.h" />
     <ClInclude Include="Engine\lib\ResourceHolder.hpp" />
     <ClInclude Include="Engine\lib\ResourceIdentifiers.inl" />
+    <ClInclude Include="Engine\lib\States\PauseState.h" />
     <ClInclude Include="Engine\lib\States\State.hpp" />
     <ClInclude Include="Engine\lib\States\StateIndentifier.inl" />
     <ClInclude Include="Engine\lib\States\StateStack.hpp" />

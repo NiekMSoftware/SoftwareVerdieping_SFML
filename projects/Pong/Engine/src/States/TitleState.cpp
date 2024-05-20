@@ -1,6 +1,6 @@
 #include "States/TitleState.h"
 
-TitleState::TitleState(StateStack& stack, Context& context)
+TitleState::TitleState(StateStack& stack, const Context& context)
 : State(stack, context),
 mWorldView(context.window->getDefaultView()),
 mWorldBounds(0.f, 0.f, mWorldView.getSize().x, mWorldView.getSize().y),

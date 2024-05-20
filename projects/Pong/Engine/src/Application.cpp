@@ -2,6 +2,7 @@
 
 #include "States/TitleState.h"
 #include "States/GameState.h"
+#include "States/PauseState.h"
 
 Application::Application()
 : mWindow(sf::VideoMode(800, 600), "Pong"),
@@ -29,6 +30,7 @@ void Application::RegisterStates()
 {
 	mStateStack.RegisterState<TitleState>(States::TITLE);
 	mStateStack.RegisterState<GameState>(States::GAME);
+	mStateStack.RegisterState<PauseState>(States::PAUSE);
 }
 
 void Application::Run()
