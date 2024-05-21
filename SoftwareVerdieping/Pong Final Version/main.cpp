@@ -1,25 +1,19 @@
-﻿#include <SFML/Graphics.hpp> 
+﻿#include <iostream>
+#include "Application.hpp"
 
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Hello, World!");
-
-	while (window.isOpen())
+	try
 	{
-		sf::Event event;
-		while(window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-
-			if (event.type == sf::Event::KeyPressed)
-			{
-				if (event.key.code == sf::Keyboard::Escape)
-					window.close();
-			}
-		}
+		Application app;
+		app.Run();
+	}
+	catch (std::bad_exception& e)
+	{
+		std::cout << "Womp womp" << e.what();
+		return EXIT_FAILURE;
 	}
 
-	return 0;
+	return EXIT_SUCCESS;
 }

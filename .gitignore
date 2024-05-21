@@ -1,5 +1,4 @@
 # Ignore Build's x64 files
-projects/Pong/x64
 *.idea
 
 ## Ignore Visual Studio temporary files, build results, and
