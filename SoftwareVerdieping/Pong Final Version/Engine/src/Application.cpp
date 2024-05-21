@@ -14,7 +14,6 @@ void Application::CalculateDeltaTimes()
 	fixedDeltaTime += elapsedTime;
 }
 
-
 void Application::Run()
 {
 	while (mWindow.isOpen())

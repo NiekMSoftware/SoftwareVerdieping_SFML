@@ -6,5 +6,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\lib\Application.hpp" />
+    <ClInclude Include="Engine\lib\ResourceHolder.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Engine\lib\ResourceIdentifiers.inl" />
   </ItemGroup>
 </Project>

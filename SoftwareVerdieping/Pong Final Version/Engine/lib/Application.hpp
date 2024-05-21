@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "ResourceIdentifiers.inl"
+
 class Application {
 
 public:
@@ -28,4 +30,6 @@ private:
 	sf::Time deltaTime; //!< Normal delta Time of the engine.
 	sf::Time fixedDeltaTime; //!< Fixed delta time of the engine.
 	sf::Clock mClock;
+
+	PlayerTextures mPlayerTextures;
 };
