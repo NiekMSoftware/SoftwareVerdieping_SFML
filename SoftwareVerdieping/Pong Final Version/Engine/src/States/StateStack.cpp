@@ -19,10 +19,9 @@ State::Ptr StateStack::CreateState(States::ID stateID)
 
 void StateStack::Update(sf::Time dt)
 {
-	// Iterate through the stack
+	// Reverse iterate through the stack, so it takes the last element
 	for (auto itr = mStack.rbegin(); itr != mStack.rend(); ++itr)
 	{
-		// Check if the smart pointer is Updating, if not return
 		if (!(*itr)->Update(dt))
 			return;
 	}
@@ -33,7 +32,7 @@ void StateStack::Update(sf::Time dt)
 
 void StateStack::FixedUpdate(sf::Time fixedDeltaTime)
 {
-	// Iterate through the stack
+	// Reverse iterate through the stack, so it takes the last element
 	for (auto itr = mStack.rbegin(); itr != mStack.rend(); ++itr)
 	{
 		// Check if the smart pointer is Updating, if not return
@@ -47,7 +46,7 @@ void StateStack::FixedUpdate(sf::Time fixedDeltaTime)
 
 void StateStack::HandleEvent(const sf::Event& event)
 {
-	// Iterate through stack
+	// Reverse iterate through the stack, so it takes the last element
 	for (auto itr = mStack.rbegin(); itr != mStack.rend(); ++itr)
 	{
 		// check if the state should handle anything
