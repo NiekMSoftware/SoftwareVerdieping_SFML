@@ -22,6 +22,7 @@ void StateStack::Update(sf::Time dt)
 	// Reverse iterate through the stack, so it takes the last element
 	for (auto itr = mStack.rbegin(); itr != mStack.rend(); ++itr)
 	{
+		// Check if the iter is updating, if so return.
 		if (!(*itr)->Update(dt))
 			return;
 	}
@@ -35,7 +36,7 @@ void StateStack::FixedUpdate(sf::Time fixedDeltaTime)
 	// Reverse iterate through the stack, so it takes the last element
 	for (auto itr = mStack.rbegin(); itr != mStack.rend(); ++itr)
 	{
-		// Check if the smart pointer is Updating, if not return
+		// Check if the iter is updating, if so return.
 		if (!(*itr)->FixedUpdate(fixedDeltaTime))
 			return;
 	}
@@ -58,7 +59,7 @@ void StateStack::HandleEvent(const sf::Event& event)
 	ApplyPendingChanges();
 }
 
-void StateStack::Display()
+void StateStack::Display() const
 {
 	// Iterate through the stack
 	for (const State::Ptr& ptr : mStack)
