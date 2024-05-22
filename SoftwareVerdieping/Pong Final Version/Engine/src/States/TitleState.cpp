@@ -16,12 +16,12 @@ void TitleState::Draw() const
 
 bool TitleState::Update(sf::Time dt)
 {
-	return true;
+	return false;
 }
 
 bool TitleState::FixedUpdate(sf::Time fixedDt)
 {
-	return true;
+	return false;
 }
 
 bool TitleState::HandleEvent(const sf::Event& event)
@@ -31,6 +31,7 @@ bool TitleState::HandleEvent(const sf::Event& event)
 	{
 		// request to clear out of all the states.
 		RequestStateClear();
+
 		return false;
 	}
 
@@ -40,8 +41,9 @@ bool TitleState::HandleEvent(const sf::Event& event)
 		// once a key has been pressed, request to pop it.
 		RequestStackPop();
 
-		// // Request to push in the new state.
-		// RequestStackPush(States::GAME);
+		// Request to push in the new state.
+		RequestStackPush(States::GAME);
+
 		return false;
 	}
 

@@ -40,5 +40,5 @@ private:
 	PlayerTextures mPlayerTextures; //!< The resource holder of the Player textures.
 	FontHolder mFontHolder; //!< The resource holder of the fonts.
 
-	bool mPaused;
+	bool mPaused = false;
 };

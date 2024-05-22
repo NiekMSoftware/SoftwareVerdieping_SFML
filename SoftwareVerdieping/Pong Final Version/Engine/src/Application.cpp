@@ -1,6 +1,7 @@
 #include "Application.hpp"
 
 // state inclusion
+#include "States/GameState.h"
 #include "States/TitleState.h"
 
 Application::Application()
@@ -8,8 +9,7 @@ Application::Application()
 mTimePerFrame(sf::seconds(1.f / 60)),
 deltaTime(sf::Time::Zero),
 fixedDeltaTime(sf::Time::Zero),
-mStack(State::Context(mWindow, mPlayerTextures, mFontHolder, mPaused)),
-mPaused(false)
+mStack(State::Context(mWindow, mPlayerTextures, mFontHolder, mPaused))
 {
 	LoadResources();
 	RegisterStates();
@@ -25,6 +25,7 @@ void Application::RegisterStates()
 {
 	// Register the title, game and pause states.
 	mStack.RegisterState<TitleState>(States::TITLE);
+	mStack.RegisterState<GameState>(States::GAME);
 }
 
 void Application::CalculateDeltaTimes()

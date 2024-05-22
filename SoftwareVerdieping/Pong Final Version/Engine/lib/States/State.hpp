@@ -6,41 +6,18 @@
 #include "ResourceIdentifiers.inl"
 #include "StateIdentifiers.inl"
 
-
+// forward decleration to the stackz
 class StateStack;
 
-///////////////////////////////////////////
-/// \brief Base class for all game states.
-///
-///	The State class serves as an abstract base class for different game states.
-///	It provides a common interface for initializing, updating, rendering and handling events.
-///	Each state is associated with a \c 'StateStack' and a shared context which includes access to the
-///	render window and further important resources and data.
-///
-///////////////////////////////////////////
+// Base class for all game states.
 class State
 {
 public:
-	typedef std::unique_ptr<State> Ptr; //!< Unique pointer to a State.
+	typedef std::unique_ptr<State> Ptr;
 
-	/////////////////////////////////////////
-	/// \brief Context shared among states.
-	///
-	///	This struct holds references to resources and other shared objects
-	///	needed by states. It is passed to each state when it is created.
-	///
-	////////////////////////////////////////Gr
+	// Context shared amongst states.
 	struct Context
 	{
-		/////////////////////////////////////
-		/// \brief Constructs the Context.
-		///
-		///	\param window Reference to the render window.
-		///	\param textures Reference to the player textures.
-		///	\param fonts Reference to the font holder.
-		///	\param paused Reference to the pause flag.
-		///
-		/////////////////////////////////////
 		Context(sf::RenderWindow& window, PlayerTextures& textures, FontHolder& fonts, bool& paused)
 		: window(&window),
 		textures(&textures),
@@ -48,84 +25,43 @@ public:
 		paused(&paused)
 		{ }
 
-		sf::RenderWindow* window;	//!< Pointer to the render window.
-		PlayerTextures* textures;	//!< Pointer to the player textures.
-		FontHolder* fonts;			//!< Pointer to the font holder.
+		sf::RenderWindow* window;
+		PlayerTextures* textures;
+		FontHolder* fonts;
 
-		bool* paused;				//!< Pointer to the pause flag.
+		bool* paused;
 	};
 
 public:
-	////////////////////////////////////////
-	/// \brief Constructs a state with a given stack and context.
-	///
-	///	\param stack Reference to the state stack.
-	///	\param context Reference to the shared context.
-	///
-	///////////////////////////////////////
 	State(StateStack& stack, const Context& context);
 
-	// Virtual destructor.
 	virtual ~State();
 
-	////////////////////////////////////////
-	/// \brief Draws the state onto the render window.
-	///
-	///	This method must be implemented by derrived classes to draw the state's content.
-	////////////////////////////////////////
+	// Draws out the state to the render window
 	virtual void Draw() const = 0;
 
-	////////////////////////////////////////
-	/// \brief Updates the state.
-	///
-	///	\param dt The time delta for the update.
-	///	\return True to continue updating, false to stop.
-	///
-	///////////////////////////////////////////
+	// Updates the state with the given delta time.
 	virtual bool Update(sf::Time dt) = 0;
 
-	////////////////////////////////////////
-	/// \brief Performs a fixed update on the state.
-	///
-	///	\param fixedDt The fixed time delta for the update.
-	///	\return True to continue updating, false to stop.
-	///
-	////////////////////////////////////////
+	// Performs a fixed update with the given fixed delta time.
 	virtual bool FixedUpdate(sf::Time fixedDt) = 0;
 
-	////////////////////////////////////////
-	/// \brief Handles events for the state.
-	///
-	///	\param event The SFML event to handle.
-	///	\return True if the event was handled, false otherwise.
-	///
-	////////////////////////////////////////
+	// Handles events for the state.
 	virtual bool HandleEvent(const sf::Event& event) = 0;
 
 protected:
-	////////////////////////////////////////
-	/// \brief Requests to push a new state onto the stack.
-	///
-	///	\param id The ID of the state to push.
-	///
-	////////////////////////////////////////
 	void RequestStackPush(States::ID id);
 
-	void RequestStackPop(); //!< Requests to pop the current state from the stack.
-	void RequestStateClear(); //!< Requests to clear all states from the stack.
+	void RequestStackPop();
+	void RequestStateClear();
 
-	////////////////////////////////////////
-	/// \brief Gets the shared context.
-	///
-	///	\return The shared context.
-	///
-	////////////////////////////////////////
+	// Get the context.
 	Context GetContext() const;
 
-	bool mIsPaused = false;		//!<  Indicates if the state is paused.
+	bool mIsPaused = false;
 
 private:
-	StateStack* mStack;		//!< Pointer to the state stack.
+	StateStack* mStack;
 
-	Context mContext;	//!< Shared context for the state.
+	Context mContext;
 };
