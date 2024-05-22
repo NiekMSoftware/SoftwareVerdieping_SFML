@@ -3,7 +3,7 @@
 #include "States/StateStack.hpp"
 
 State::State(StateStack& stateStack, const Context& context)
-: mIsPaused(context.paused),
+: mIsPaused(*context.paused),
 mStack(&stateStack),
 mContext(context)
 { }

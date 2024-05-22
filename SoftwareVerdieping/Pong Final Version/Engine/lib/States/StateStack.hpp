@@ -10,30 +10,19 @@
 
 class State;
 
-////////////////////////////////////////
-/// \brief Manages a stack of game states.
-///
-///	Providing mechanisms to push, pop and clear states.
-///
-////////////////////////////////////////
+// Manages a stack of game states.
 class StateStack : sf::NonCopyable
 {
 public:
-	// The actions that can be performed on the state stack.
+	// The actions that can be performed on the stack.
 	enum Actions
 	{
-		PUSH, //!< Push in a new State. 
-		POP, //!< Pop the current State.
-		CLEAR //!< Clear the stack of States.
+		PUSH,
+		POP,
+		CLEAR
 	};
 
 public:
-	////////////////////////////////////////
-	/// \brief Constructs the StateStack with given context.
-	///
-	///	\param context The context shared among states.
-	///
-	///////////////////////////////////////
 	explicit StateStack(const State::Context& context);
 
 	////////////////////////////////////////
@@ -46,56 +35,27 @@ public:
 	template <typename T>
 	void RegisterState(States::ID stateID);
 
-	////////////////////////////////////////
-	/// \brief Updates the active states.
-	///
-	///	\param dt The time delta to update the states with.
-	///
-	////////////////////////////////////////
+	// Updates the active states.
 	void Update(sf::Time dt);
 
-	////////////////////////////////////////
-	/// \brief Updates the active states with fixed time steps.
-	///
-	///	\param fixedDt The fixed time delta to update the states with.
-	///
-	////////////////////////////////////////
+	// Updates the active states with fixed time steps.
 	void FixedUpdate(sf::Time fixedDt);
 
-	////////////////////////////////////////
-	///
-	/// \brief Renders the active states.
-	///
-	////////////////////////////////////////
+	// Renders out the stack's states.
 	void Display() const;
 
-	////////////////////////////////////////
-	/// \brief Handles events for the active states.
-	///
-	///	\param event The SFML event to handle.
-	///
-	////////////////////////////////////////
+	// Handles events for the active states.
 	void HandleEvent(const sf::Event& event);
 
-	////////////////////////////////////////
-	/// \brief Pushes a state onto the stack.
-	/// \param stateID The ID of the State to push.
-	///
-	////////////////////////////////////////
 	void PushState(States::ID stateID);
+	void PopState();
+	void ClearStates();
 
-	void PopState(); //!< Pops the current state from the stack.
-	void ClearStates(); //!< Clears all states from the stack.
-
-	////////////////////////////////////////
-	///	\brief Checks if the stack is empty.
-	///
+	///	Checks if the stack is empty.
 	///	\returns True if the stack is empty, false otherwise.
-	///
-	////////////////////////////////////////
 	bool IsEmpty() const;
 
-	void ApplyPendingChanges(); //!< Applies any pending changes to the state stack.
+	void ApplyPendingChanges();
 
 private:
 	////////////////////////////////////////
@@ -111,16 +71,18 @@ private:
 	// Represents a pending change to be applied to the state stack.
 	struct PendingChange
 	{
-		Actions action; //!< The action to perform.
-		States::ID stateID; //!< The ID of the state.
+		Actions action;
+		States::ID stateID;
 	};
 
 private:
-	std::vector<State::Ptr> mStack; //!< The stack of the Unique pointers to the states.
-	std::vector<PendingChange> mPendingList; //!< The pending list of the actions to perform on \c mStack.
+	std::vector<State::Ptr> mStack;
+	std::vector<PendingChange> mPendingList;
 
-	State::Context mContext; //!< The context shared among states.
-	std::map<States::ID, std::function<State::Ptr()>> mFactories; //!< Factory for creating States.
+	State::Context mContext;
+
+	// Factory for creating states.
+	std::map<States::ID, std::function<State::Ptr()>> mFactories;
 };
 
 template <typename T>

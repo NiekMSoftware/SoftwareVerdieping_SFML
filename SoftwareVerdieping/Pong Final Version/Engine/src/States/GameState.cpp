@@ -7,16 +7,15 @@ mWindow(context.window)
 
 void GameState::Draw() const
 {
-	mWindow->clear(sf::Color::Red);
+	mWindow->clear(sf::Color(33, 44, 54));
 
-	if (!GetContext().paused)
-		mWindow->display();
+	mWindow->display();
 }
 
 bool GameState::Update(sf::Time dt)
 {
 	// Stop updating the state if the game is paused.
-	if (GetContext().paused)
+	if (mIsPaused)
 		return false;
 
 	return true;
@@ -25,7 +24,7 @@ bool GameState::Update(sf::Time dt)
 bool GameState::FixedUpdate(sf::Time fixedDt)
 {
 	// Stop updating the state if the game is paused.
-	if (GetContext().paused)
+	if (mIsPaused)
 		return false;
 
 	return true;
@@ -40,10 +39,6 @@ bool GameState::HandleEvent(const sf::Event& event)
 		return true;
 	}
 
-	// // Stop handling the state if the game is paused.
-	// if (GetContext().paused)
-	// 	return false;
-
 	// Handle key presses
 	if (event.type == sf::Event::KeyPressed)
 	{
@@ -51,8 +46,7 @@ bool GameState::HandleEvent(const sf::Event& event)
 		if (event.key.code == sf::Keyboard::Escape)
 		{
 			// set the paused flag to true
-			bool& paused = *GetContext().paused;
-			paused = true;
+			mIsPaused = true;
 
 			// TODO: Push in the pause state.
 

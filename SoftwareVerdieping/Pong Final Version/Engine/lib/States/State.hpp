@@ -40,13 +40,16 @@ public:
 	// Draws out the state to the render window
 	virtual void Draw() const = 0;
 
-	// Updates the state with the given delta time.
+	/// Updates the state.
+	///	\return True to continue updating, false to stop.
 	virtual bool Update(sf::Time dt) = 0;
 
-	// Performs a fixed update with the given fixed delta time.
+	/// Performs a fixed update with the given fixed delta time.
+	///	\return True to continue updating, false to stop.
 	virtual bool FixedUpdate(sf::Time fixedDt) = 0;
 
-	// Handles events for the state.
+	/// Handles events for the state.
+	///	\return True if the event was handled, false if not.
 	virtual bool HandleEvent(const sf::Event& event) = 0;
 
 protected:
@@ -55,10 +58,9 @@ protected:
 	void RequestStackPop();
 	void RequestStateClear();
 
-	// Get the context.
 	Context GetContext() const;
 
-	bool mIsPaused = false;
+	bool& mIsPaused;
 
 private:
 	StateStack* mStack;
