@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "ResourceIdentifiers.inl"
+#include "States/StateStack.hpp"
 
 class Application {
 
@@ -16,9 +17,10 @@ private:
 	void FixedUpdate(sf::Time fixedDt);
 
 	void HandleEvent();
-
 	void Display();
 
+	void LoadResources();
+	void RegisterStates();
 	void CalculateDeltaTimes();
 
 private:
@@ -31,5 +33,12 @@ private:
 	sf::Time fixedDeltaTime; //!< Fixed delta time of the engine.
 	sf::Clock mClock;
 
-	PlayerTextures mPlayerTextures;
+	// State stack
+	StateStack mStack; //!< The stack of states, used throughout the Engine.
+
+	// Resources
+	PlayerTextures mPlayerTextures; //!< The resource holder of the Player textures.
+	FontHolder mFontHolder; //!< The resource holder of the fonts.
+
+	bool mPaused;
 };

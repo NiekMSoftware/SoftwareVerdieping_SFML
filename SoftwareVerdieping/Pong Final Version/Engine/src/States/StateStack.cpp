@@ -26,6 +26,9 @@ void StateStack::Update(sf::Time dt)
 		if (!(*itr)->Update(dt))
 			return;
 	}
+
+	// Apply any pending changes this state has.
+	ApplyPendingChanges();
 }
 
 void StateStack::FixedUpdate(sf::Time fixedDeltaTime)
@@ -37,6 +40,23 @@ void StateStack::FixedUpdate(sf::Time fixedDeltaTime)
 		if (!(*itr)->FixedUpdate(fixedDeltaTime))
 			return;
 	}
+
+	// Apply any pending changes this state has.
+	ApplyPendingChanges();
+}
+
+void StateStack::HandleEvent(const sf::Event& event)
+{
+	// Iterate through stack
+	for (auto itr = mStack.rbegin(); itr != mStack.rend(); ++itr)
+	{
+		// check if the state should handle anything
+		if (!(*itr)->HandleEvent(event))
+			return;
+	}
+
+	// Apply any pending changes this state has.
+	ApplyPendingChanges();
 }
 
 void StateStack::Display()
@@ -49,17 +69,6 @@ void StateStack::Display()
 
 		// Draw the State onto the screen
 		state.Draw();
-	}
-}
-
-void StateStack::HandleEvent(const sf::Event& event)
-{
-	// Iterate through stack
-	for (auto itr = mStack.rbegin(); itr != mStack.rend(); ++itr)
-	{
-		// check if the state should handle anything
-		if (!(*itr)->HandleEvent(event))
-			return;
 	}
 }
 

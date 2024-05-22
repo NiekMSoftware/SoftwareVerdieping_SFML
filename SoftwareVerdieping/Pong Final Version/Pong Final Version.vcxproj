@@ -74,7 +74,7 @@
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)\Engine\lib;$(SolutionDir)\include</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)\include;</IncludePath>
+    <IncludePath>$(ProjectDir)\Engine\lib;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)\include</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Engine\lib;$(SolutionDir)\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +142,7 @@
     <ClCompile Include="Engine\src\Application.cpp" />
     <ClCompile Include="Engine\src\States\State.cpp" />
     <ClCompile Include="Engine\src\States\StateStack.cpp" />
+    <ClCompile Include="Engine\src\States\TitleState.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="Engine\lib\ResourceHolder.hpp" />
     <ClInclude Include="Engine\lib\States\State.hpp" />
     <ClInclude Include="Engine\lib\States\StateStack.hpp" />
+    <ClInclude Include="Engine\lib\States\TitleState.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\lib\ResourceIdentifiers.inl" />
