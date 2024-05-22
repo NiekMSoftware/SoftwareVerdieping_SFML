@@ -9,8 +9,15 @@ namespace Textures
 	{
 		DEFAULT,
 		INA,
-		WOMP
+		WOMP,
+		TEXTURE_COUNT
+	};
+
+	enum Fonts
+	{
+		DEFAULT_FONT
 	};
 }
 
 typedef ResourceHolder<sf::Texture, Textures::PlayerTextures> PlayerTextures;
+typedef ResourceHolder<sf::Font, Textures::Fonts> FontHolder;

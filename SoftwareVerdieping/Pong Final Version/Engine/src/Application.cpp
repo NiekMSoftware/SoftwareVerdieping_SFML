@@ -35,14 +35,17 @@ void Application::Run()
 
 void Application::Update(sf::Time dt)
 {
+
 }
 
 void Application::FixedUpdate(sf::Time fixedDt)
 {
+
 }
 
 void Application::HandleEvent()
 {
+
 }
 
 void Application::Display()
