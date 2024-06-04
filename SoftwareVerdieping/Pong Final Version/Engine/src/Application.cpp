@@ -2,6 +2,7 @@
 
 // state inclusion
 #include "States/GameState.h"
+#include "States/PauseState.h"
 #include "States/TitleState.h"
 
 Application::Application()
@@ -26,6 +27,7 @@ void Application::RegisterStates()
 	// Register the title, game and pause states.
 	mStack.RegisterState<TitleState>(States::TITLE);
 	mStack.RegisterState<GameState>(States::GAME);
+	mStack.RegisterState<PauseState>(States::PAUSE);
 }
 
 void Application::CalculateDeltaTimes()

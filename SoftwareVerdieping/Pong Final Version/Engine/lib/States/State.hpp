@@ -42,11 +42,11 @@ public:
 
 	/// Updates the state.
 	///	\return True to continue updating, false to stop.
-	virtual bool Update(sf::Time dt) = 0;
+	virtual bool Update(sf::Time deltaTime) = 0;
 
 	/// Performs a fixed update with the given fixed delta time.
 	///	\return True to continue updating, false to stop.
-	virtual bool FixedUpdate(sf::Time fixedDt) = 0;
+	virtual bool FixedUpdate(sf::Time fixedDeltaTime) = 0;
 
 	/// Handles events for the state.
 	///	\return True if the event was handled, false if not.

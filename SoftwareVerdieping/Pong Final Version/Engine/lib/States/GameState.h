@@ -12,5 +12,5 @@ public:
 	bool HandleEvent(const sf::Event& event) override;
 
 private:
-	sf::RenderWindow* mWindow; //!< Refernce to the context's render window.
+	sf::RenderWindow* mWindow;
 };

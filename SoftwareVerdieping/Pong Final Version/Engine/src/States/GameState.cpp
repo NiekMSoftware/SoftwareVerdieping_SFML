@@ -9,7 +9,9 @@ void GameState::Draw() const
 {
 	mWindow->clear(sf::Color(33, 44, 54));
 
-	mWindow->display();
+	// Render this state only when the game isn't paused.
+	if (!mIsPaused)
+		mWindow->display();
 }
 
 bool GameState::Update(sf::Time dt)
@@ -48,7 +50,8 @@ bool GameState::HandleEvent(const sf::Event& event)
 			// set the paused flag to true
 			mIsPaused = true;
 
-			// TODO: Push in the pause state.
+			// Push in the pause state.
+			RequestStackPush(States::PAUSE);
 
 			return true;
 		}
