@@ -8,6 +8,9 @@
     <ClCompile Include="Engine\src\States\TitleState.cpp" />
     <ClCompile Include="Engine\src\States\GameState.cpp" />
     <ClCompile Include="Engine\src\States\PauseState.cpp" />
+    <ClCompile Include="Engine\src\GUI\Component.cpp" />
+    <ClCompile Include="Engine\src\GUI\Container.cpp" />
+    <ClCompile Include="Engine\src\GUI\Label.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\lib\Application.hpp" />
@@ -17,9 +20,15 @@
     <ClInclude Include="Engine\lib\States\TitleState.h" />
     <ClInclude Include="Engine\lib\States\GameState.h" />
     <ClInclude Include="Engine\lib\States\PauseState.h" />
+    <ClInclude Include="Engine\lib\GUI\Component.hpp" />
+    <ClInclude Include="Engine\lib\GUI\Container.hpp" />
+    <ClInclude Include="Engine\lib\GUI\Label.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\lib\ResourceIdentifiers.inl" />
     <None Include="Engine\lib\States\StateIdentifiers.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Engine\assets\fonts\default_font.ttf" />
   </ItemGroup>
 </Project>

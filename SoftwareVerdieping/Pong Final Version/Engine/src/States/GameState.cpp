@@ -2,12 +2,31 @@
 
 GameState::GameState(StateStack& stack, const Context& context)
 : State(stack, context),
-mWindow(context.window)
-{ }
+mWindow(context.window),
+mPlayer1(sf::Vector2f(20, 120)),
+mPlayer2(sf::Vector2f(20, 120)),
+mWorldView(context.window->getDefaultView()),
+mWorldBounds(0.f, 0.f, mWorldView.getSize().x, mWorldView.getSize().y)
+{
+	mPlayer1.setFillColor(sf::Color::Blue);
+	mPlayer1.setOutlineColor(sf::Color::Black);
+	mPlayer1.setOutlineThickness(1.f);
+	mPlayer1.setPosition(100.f, mWorldView.getSize().y / 2.f);
+	mPlayer1.setOrigin(mPlayer1.getSize() / 2.f);
+
+	mPlayer2.setFillColor(sf::Color::Red);
+	mPlayer2.setOutlineColor(sf::Color::Black);
+	mPlayer2.setOutlineThickness(1.f);
+	mPlayer2.setPosition(700.f, mWorldView.getSize().y / 2.f);
+	mPlayer2.setOrigin(mPlayer1.getSize() / 2.f);
+}
 
 void GameState::Draw() const
 {
 	mWindow->clear(sf::Color(33, 44, 54));
+
+	mWindow->draw(mPlayer1);
+	mWindow->draw(mPlayer2);
 
 	// Render this state only when the game isn't paused.
 	if (!mIsPaused)

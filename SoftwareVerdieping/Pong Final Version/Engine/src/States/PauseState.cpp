@@ -7,17 +7,17 @@ mWindow(context.window)
 
 void PauseState::Draw() const
 {
-	mWindow->clear();
+	sf::RenderWindow& window = *GetContext().window;
 
 	// Set the background shape
 	sf::RectangleShape backgroundShape;
-	backgroundShape.setFillColor(sf::Color(0, 0, 0, 5));
-	backgroundShape.setSize(sf::Vector2f(mWindow->getSize()));
+	backgroundShape.setFillColor(sf::Color(0, 0, 0, 150));
+	backgroundShape.setSize(sf::Vector2f(window.getSize()));
 	backgroundShape.setPosition(0, 0);
 
-	mWindow->draw(backgroundShape);
+	window.draw(backgroundShape);
 
-	mWindow->display();
+	window.display();
 }
 
 bool PauseState::Update(sf::Time deltaTime)

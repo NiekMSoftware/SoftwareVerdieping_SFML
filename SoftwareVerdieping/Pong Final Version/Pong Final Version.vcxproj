@@ -139,6 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\src\GUI\Component.cpp" />
+    <ClCompile Include="Engine\src\GUI\Container.cpp" />
+    <ClCompile Include="Engine\src\GUI\Label.cpp" />
     <ClCompile Include="Engine\src\States\PauseState.cpp" />
     <ClCompile Include="Engine\src\Application.cpp" />
     <ClCompile Include="Engine\src\States\GameState.cpp" />
@@ -149,6 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\lib\Application.hpp" />
+    <ClInclude Include="Engine\lib\GUI\Component.hpp" />
+    <ClInclude Include="Engine\lib\GUI\Container.hpp" />
+    <ClInclude Include="Engine\lib\GUI\Label.hpp" />
     <ClInclude Include="Engine\lib\ResourceHolder.hpp" />
     <ClInclude Include="Engine\lib\States\GameState.h" />
     <ClInclude Include="Engine\lib\States\PauseState.h" />
@@ -159,6 +165,9 @@
   <ItemGroup>
     <None Include="Engine\lib\ResourceIdentifiers.inl" />
     <None Include="Engine\lib\States\StateIdentifiers.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Engine\assets\fonts\default_font.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

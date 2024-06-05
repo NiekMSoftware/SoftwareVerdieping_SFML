@@ -12,6 +12,9 @@ deltaTime(sf::Time::Zero),
 fixedDeltaTime(sf::Time::Zero),
 mStack(State::Context(mWindow, mPlayerTextures, mFontHolder, mPaused))
 {
+	// enable vsync
+	mWindow.setFramerateLimit(69);
+
 	LoadResources();
 	RegisterStates();
 
@@ -20,7 +23,9 @@ mStack(State::Context(mWindow, mPlayerTextures, mFontHolder, mPaused))
 }
 
 void Application::LoadResources()
-{ /* Load any resources beforehand */ }
+{
+	mFontHolder.Load(Fonts::DEFAULT_FONT, "Engine/assets/fonts/default_font.ttf");
+}
 
 void Application::RegisterStates()
 {
@@ -36,7 +41,7 @@ void Application::CalculateDeltaTimes()
 	sf::Time elapsedTime = mClock.restart();
 
 	// add this elapsed time to the delta time and fixedDeltaTime
-	deltaTime += elapsedTime;
+	deltaTime = elapsedTime;
 	fixedDeltaTime += elapsedTime;
 }
 

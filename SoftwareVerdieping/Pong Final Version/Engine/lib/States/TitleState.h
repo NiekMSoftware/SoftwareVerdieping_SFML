@@ -1,5 +1,6 @@
 #pragma once
 #include "State.hpp"
+#include "GUI/Label.hpp"
 
 class TitleState : public State
 {
@@ -12,5 +13,17 @@ public:
 	bool HandleEvent(const sf::Event& event) override;
 
 private:
+	void LoadResources(const Context& context);
+
+private:
 	sf::RenderWindow* mWindow; //!< Reference to the window of the Context.
+
+	sf::Text mTitleText;
+	sf::Text mText;
+
+	sf::View mWorldView;
+	sf::FloatRect mWorldBounds;
+
+	bool mShowText;
+	sf::Time mTextTimer;
 };

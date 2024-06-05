@@ -13,4 +13,10 @@ public:
 
 private:
 	sf::RenderWindow* mWindow;
+
+	sf::RectangleShape mPlayer1;
+	sf::RectangleShape mPlayer2;
+
+	sf::View mWorldView;
+	sf::FloatRect mWorldBounds;
 };

@@ -13,6 +13,11 @@ namespace Textures
 		TEXTURE_COUNT
 	};
 
+
+}
+
+namespace Fonts
+{
 	enum Fonts
 	{
 		DEFAULT_FONT
@@ -20,4 +25,4 @@ namespace Textures
 }
 
 typedef ResourceHolder<sf::Texture, Textures::PlayerTextures> PlayerTextures;
-typedef ResourceHolder<sf::Font, Textures::Fonts> FontHolder;
+typedef ResourceHolder<sf::Font, Fonts::Fonts> FontHolder;
