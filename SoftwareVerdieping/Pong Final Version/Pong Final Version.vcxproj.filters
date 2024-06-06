@@ -11,6 +11,8 @@
     <ClCompile Include="Engine\src\GUI\Component.cpp" />
     <ClCompile Include="Engine\src\GUI\Container.cpp" />
     <ClCompile Include="Engine\src\GUI\Label.cpp" />
+    <ClCompile Include="Engine\src\Paddle.cpp" />
+    <ClCompile Include="Engine\src\Ball.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\lib\Application.hpp" />
@@ -23,6 +25,8 @@
     <ClInclude Include="Engine\lib\GUI\Component.hpp" />
     <ClInclude Include="Engine\lib\GUI\Container.hpp" />
     <ClInclude Include="Engine\lib\GUI\Label.hpp" />
+    <ClInclude Include="Engine\lib\Paddle.h" />
+    <ClInclude Include="Engine\lib\Ball.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\lib\ResourceIdentifiers.inl" />

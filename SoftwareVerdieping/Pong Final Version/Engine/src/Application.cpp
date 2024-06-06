@@ -13,7 +13,7 @@ fixedDeltaTime(sf::Time::Zero),
 mStack(State::Context(mWindow, mPlayerTextures, mFontHolder, mPaused))
 {
 	// enable vsync
-	mWindow.setFramerateLimit(69);
+	mWindow.setFramerateLimit(50);
 
 	LoadResources();
 	RegisterStates();

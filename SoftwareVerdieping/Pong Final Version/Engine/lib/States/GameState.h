@@ -1,4 +1,6 @@
 #pragma once
+#include "Ball.h"
+#include "Paddle.h"
 #include "State.hpp"
 
 class GameState : public State
@@ -12,11 +14,22 @@ public:
 	bool HandleEvent(const sf::Event& event) override;
 
 private:
+	void HandlePlayerInput(sf::Keyboard::Key key, bool isPressed);
+	void handleBallCollision();
+
+private:
 	sf::RenderWindow* mWindow;
 
-	sf::RectangleShape mPlayer1;
-	sf::RectangleShape mPlayer2;
+	// set up pong objects
+	Paddle mPlayer1;
+	Paddle mPlayer2;
+	Ball mBall;
 
-	sf::View mWorldView;
-	sf::FloatRect mWorldBounds;
+	bool mPlayerOneUp = false;
+	bool mPlayerOneDown = false;
+	bool mPlayerTwoUp = false;
+	bool mPlayerTwoDown = false;
+
+	int mPlayerOneScore = 0;
+	int mPlayerTwoScore = 0;
 };
