@@ -22,6 +22,7 @@ private:
 	// Labels
 	GUI::Label mPauseLabel;
 
+	// Shared pointers of the labels
 	std::shared_ptr<GUI::Label> mEscapeInstruction;
 	std::shared_ptr<GUI::Label> mBar;
 	std::shared_ptr<GUI::Label> mExitInstruction;

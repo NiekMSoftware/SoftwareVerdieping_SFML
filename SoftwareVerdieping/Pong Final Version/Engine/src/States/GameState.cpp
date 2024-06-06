@@ -1,14 +1,34 @@
 #include "States/GameState.h"
 
+#include "Utility.hpp"
+
 GameState::GameState(StateStack& stack, const Context& context)
 : State(stack, context),
 mWindow(context.window),
 mPlayer1(50, 300, context),
 mPlayer2(740, 300, context),
-mBall(400, 300, context)
+mBall(400, 300, context),
+mPlayerOneText(mPlayerOneScore, *context.fonts),
+mPlayerTwoText(mPlayerTwoScore, *context.fonts)
 {
 	// set the texture of the ball
 	mBall.setTexture(Textures::BIJOU);
+
+	// set text to bold
+	mPlayerOneText.SetFont(*context.fonts, Fonts::DEFAULT_BOLD);
+	mPlayerTwoText.SetFont(*context.fonts, Fonts::DEFAULT_BOLD);
+
+	// set size of text
+	mPlayerOneText.SetSize(40);
+	mPlayerTwoText.SetSize(40);
+
+	// center origin of text
+	CenterOrigin(mPlayerOneText.GetText());
+	CenterOrigin(mPlayerTwoText.GetText());
+
+	// set position of text
+	mPlayerOneText.setPosition(50, 100);
+	mPlayerTwoText.setPosition(740, 100);
 }
 
 void GameState::Draw() const {
@@ -17,6 +37,10 @@ void GameState::Draw() const {
 	mWindow->draw(mPlayer1.getShape());
 	mWindow->draw(mPlayer2.getShape());
 	mWindow->draw(mBall.getShape());
+
+	// draw out the labels
+	mWindow->draw(mPlayerOneText);
+	mWindow->draw(mPlayerTwoText);
 
 	// Render this state only when the game isn't paused.
 	if (!mIsPaused)
@@ -31,6 +55,8 @@ bool GameState::Update(sf::Time dt) {
 	// once either players have 3 points, stop the game
 	if (mPlayerOneScore >= 3 || mPlayerTwoScore >= 3) {
 		RequestStackPop();
+
+		// TODO: Instead of pushing in the title state, we push in the game over state. Which checks who won and displays it
 		RequestStackPush(States::TITLE);
 	}
 
@@ -135,11 +161,13 @@ void GameState::handleBallCollision()
 	// Handle scoring
 	if (mBall.getShape().getPosition().x < 0) {
 		mPlayerTwoScore++;
+		mPlayerTwoText.SetText(mPlayerTwoScore);
 		mBall.reset(400, 300);
 	}
 
 	if (mBall.getShape().getPosition().x + mBall.getShape().getSize().x > 800) {
 		mPlayerOneScore++;
+		mPlayerOneText.SetText(mPlayerOneScore);
 		mBall.reset(400, 300);
 	}
 }

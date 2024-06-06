@@ -9,6 +9,14 @@ namespace GUI
 		mText.setOutlineThickness(1.f);
 	}
 
+	Label::Label(int number, const FontHolder& font)
+	: mText(std::to_string(number), font.get(Fonts::DEFAULT_FONT))
+	{
+		mText.setOutlineColor(sf::Color::Black);
+		mText.setOutlineThickness(1.f);
+	}
+
+
 	bool Label::IsSelectable() const
 	{
 		return false;
@@ -18,6 +26,12 @@ namespace GUI
 	{
 		mText.setString(text);
 	}
+
+	void Label::SetText(int number)
+	{
+		mText.setString(std::to_string(number));
+	}
+
 
 	sf::Text& Label::GetText()
 	{

@@ -12,10 +12,12 @@ namespace GUI
 
 	public:
 		Label(const std::string& text, const FontHolder& fonts);
+		Label(int number, const FontHolder& font);
 
 		bool IsSelectable() const override;
 
 		void SetText(const std::string& text);
+		void SetText(int number);
 		sf::Text& GetText();
 		void SetSize(unsigned int size);
 

@@ -1,7 +1,9 @@
 #pragma once
+
 #include "Ball.h"
 #include "Paddle.h"
 #include "State.hpp"
+#include "GUI/Label.hpp"
 
 class GameState : public State
 {
@@ -32,4 +34,7 @@ private:
 
 	int mPlayerOneScore = 0;
 	int mPlayerTwoScore = 0;
+
+	GUI::Label mPlayerOneText;
+	GUI::Label mPlayerTwoText;
 };
