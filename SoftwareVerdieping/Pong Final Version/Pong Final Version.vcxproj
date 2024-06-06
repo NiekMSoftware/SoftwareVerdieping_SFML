@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Ball.cpp" />
+    <ClCompile Include="Engine\src\GameObject.cpp" />
     <ClCompile Include="Engine\src\GUI\Component.cpp" />
     <ClCompile Include="Engine\src\GUI\Container.cpp" />
     <ClCompile Include="Engine\src\GUI\Label.cpp" />
@@ -155,6 +156,7 @@
   <ItemGroup>
     <ClInclude Include="Engine\lib\Application.hpp" />
     <ClInclude Include="Engine\lib\Ball.h" />
+    <ClInclude Include="Engine\lib\GameObject.hpp" />
     <ClInclude Include="Engine\lib\GUI\Component.hpp" />
     <ClInclude Include="Engine\lib\GUI\Container.hpp" />
     <ClInclude Include="Engine\lib\GUI\Label.hpp" />

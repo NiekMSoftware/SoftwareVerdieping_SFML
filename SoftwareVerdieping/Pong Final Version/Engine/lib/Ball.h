@@ -1,14 +1,16 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
+#include "GameObject.hpp"
+#include "ResourceIdentifiers.inl"
+#include "States/State.hpp"
 
-class Ball {
+class State;
+
+class Ball : public GameObject {
 public:
-	Ball(float startX, float startY);
+	Ball(float startX, float startY, const State::Context& context);
 
-	sf::CircleShape getShape() const;
-
-	void fixedUpdate();
+	void updateObject() override;
 
 	void reboundSides();
 	void reboundBatOrTop();
@@ -16,9 +18,6 @@ public:
 	void reset(float startX, float startY);
 
 private:
-	sf::Vector2f mPosition;
-	sf::CircleShape mShape;
-
 	float xVelocity;
 	float yVelocity;
 

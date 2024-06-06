@@ -2,22 +2,22 @@
 
 #include <SFML/Graphics.hpp>
 
-class Paddle {
-public:
-	Paddle(float startX, float startY);
+#include "GameObject.hpp"
+#include "ResourceIdentifiers.inl"
+#include "States/State.hpp"
 
-	sf::RectangleShape getShape() const;
+class State;
+
+class Paddle : public GameObject {
+public:
+	Paddle(float startX, float startY, const State::Context& context);
 
 	void moveUp();
 	void moveDown();
 
-	void fixedUpdate();
+	void updateObject() override;
 
 private:
-	// sfml properties
-	sf::Vector2f mPosition; //!< position of the paddle
-	sf::RectangleShape mShape; //!< rectangular shape of the paddle
-
 	// speed of paddle
 	float paddleSpeed;
 };

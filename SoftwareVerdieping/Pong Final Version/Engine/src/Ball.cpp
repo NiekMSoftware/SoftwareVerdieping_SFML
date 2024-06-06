@@ -1,23 +1,17 @@
 #include "Ball.h"
 
-Ball::Ball(float startX, float startY)
-: xVelocity(2.f),
+Ball::Ball(float startX, float startY, const State::Context& context)
+: GameObject(startX, startY, context),
+xVelocity(2.f),
 yVelocity(2.f),
-maxVelocity(50.f) {
-	// initialise position
-	mPosition.x = startX;
-	mPosition.y = startY;
-
+maxVelocity(50.f)
+{
 	// initialise ball
-	mShape.setRadius(10);
+	mShape.setSize(sf::Vector2f(20, 20));
 	mShape.setPosition(mPosition);
 }
 
-sf::CircleShape Ball::getShape() const {
-	return mShape;
-}
-
-void Ball::fixedUpdate() {
+void Ball::updateObject() {
 	// add velocity to the ball's relative position
 	mPosition.x += xVelocity;
 	mPosition.y += yVelocity;
@@ -28,8 +22,8 @@ void Ball::fixedUpdate() {
 		yVelocity = -yVelocity;
 	}
 
-	if (mPosition.y + mShape.getRadius() * 2 > 600) {
-		mPosition.y = 600 - mShape.getRadius() * 2;
+	if (mPosition.y + mShape.getSize().y > 600) {
+		mPosition.y = 600 - mShape.getSize().y;
 		yVelocity = -yVelocity;
 	}
 

@@ -13,6 +13,7 @@
     <ClCompile Include="Engine\src\GUI\Label.cpp" />
     <ClCompile Include="Engine\src\Paddle.cpp" />
     <ClCompile Include="Engine\src\Ball.cpp" />
+    <ClCompile Include="Engine\src\GameObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\lib\Application.hpp" />
@@ -27,6 +28,7 @@
     <ClInclude Include="Engine\lib\GUI\Label.hpp" />
     <ClInclude Include="Engine\lib\Paddle.h" />
     <ClInclude Include="Engine\lib\Ball.h" />
+    <ClInclude Include="Engine\lib\GameObject.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\lib\ResourceIdentifiers.inl" />

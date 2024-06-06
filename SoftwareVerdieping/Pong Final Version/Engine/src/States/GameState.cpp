@@ -3,10 +3,12 @@
 GameState::GameState(StateStack& stack, const Context& context)
 : State(stack, context),
 mWindow(context.window),
-mPlayer1(50, 300),
-mPlayer2(740, 300),
-mBall(400, 300)
-{ }
+mPlayer1(50, 300, context),
+mPlayer2(740, 300, context),
+mBall(400, 300, context)
+{
+	// get the texture for the paddles.
+}
 
 void GameState::Draw() const {
 	mWindow->clear(sf::Color(33, 44, 54));
@@ -25,8 +27,8 @@ bool GameState::Update(sf::Time dt) {
 	if (mIsPaused)
 		return false;
 
-	// once either players have 5 points, stop the game
-	if (mPlayerOneScore >= 5 || mPlayerTwoScore >= 5) {
+	// once either players have 3 points, stop the game
+	if (mPlayerOneScore >= 3 || mPlayerTwoScore >= 3) {
 		RequestStackPop();
 		RequestStackPush(States::TITLE);
 	}
@@ -48,13 +50,13 @@ bool GameState::FixedUpdate(sf::Time fixedDt) {
 	if (mPlayerTwoDown) mPlayer2.moveDown();
 
 	// update players
-	mPlayer1.fixedUpdate();
-	mPlayer2.fixedUpdate();
+	mPlayer1.updateObject();
+	mPlayer2.updateObject();
 
 	handleBallCollision();
 
 	// update ball
-	mBall.fixedUpdate();
+	mBall.updateObject();
 
 	return true;
 }
@@ -110,26 +112,22 @@ void GameState::handleBallCollision()
 	// Handle collision with paddles
 	if (mBall.getShape().getGlobalBounds().intersects(mPlayer1.getShape().getGlobalBounds())) {
 		mBall.reboundBatOrTop();
-		mBall.fixedUpdate();
-
-		// reset the ball if it gets stuck
+		mBall.updateObject();
 		if (mBall.getShape().getGlobalBounds().intersects(mPlayer1.getShape().getGlobalBounds())) {
-			mBall.reset(mPlayer1.getShape().getPosition().x + mPlayer1.getShape().getSize().x + mBall.getShape().getRadius(), mBall.getShape().getPosition().y);
+			mBall.reset(mPlayer1.getShape().getPosition().x + mPlayer1.getShape().getSize().x + mBall.getShape().getSize().x, mBall.getShape().getPosition().y);
 		}
 	}
 
 	if (mBall.getShape().getGlobalBounds().intersects(mPlayer2.getShape().getGlobalBounds())) {
 		mBall.reboundBatOrTop();
-		mBall.fixedUpdate();
-
-		// reset the ball if it gets stuck
+		mBall.updateObject();
 		if (mBall.getShape().getGlobalBounds().intersects(mPlayer2.getShape().getGlobalBounds())) {
-			mBall.reset(mPlayer2.getShape().getPosition().x - mBall.getShape().getRadius() * 2, mBall.getShape().getPosition().y);
+			mBall.reset(mPlayer2.getShape().getPosition().x - mBall.getShape().getSize().x, mBall.getShape().getPosition().y);
 		}
 	}
 
-	// Handle collision with top and bottom
-	if (mBall.getShape().getPosition().y < 0 || mBall.getShape().getPosition().y + mBall.getShape().getRadius() * 2 > 600) {
+	// Handle collision with top and bottom boundaries
+	if (mBall.getShape().getPosition().y < 0 || mBall.getShape().getPosition().y + mBall.getShape().getSize().y > 600) {
 		mBall.reboundSides();
 	}
 
@@ -139,7 +137,7 @@ void GameState::handleBallCollision()
 		mBall.reset(400, 300);
 	}
 
-	if (mBall.getShape().getPosition().x + mBall.getShape().getRadius() * 2 > 800) {
+	if (mBall.getShape().getPosition().x + mBall.getShape().getSize().x > 800) {
 		mPlayerOneScore++;
 		mBall.reset(400, 300);
 	}

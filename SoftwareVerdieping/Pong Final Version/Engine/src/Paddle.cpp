@@ -1,15 +1,10 @@
 #include "Paddle.h"
 
-Paddle::Paddle(float startX, float startY)
-: mPosition(startX, startY),
-mShape(sf::Vector2f(20, 60)),
-paddleSpeed(5) {
-	// set the position of the paddle
-	mShape.setPosition(mPosition);
-}
-
-sf::RectangleShape Paddle::getShape() const {
-	return mShape;
+Paddle::Paddle(float startX, float startY, const State::Context& context)
+: GameObject(startX, startY, context),
+paddleSpeed(5)
+{
+	mShape.setSize(sf::Vector2f(10, 80));
 }
 
 void Paddle::moveUp() {
@@ -24,6 +19,6 @@ void Paddle::moveDown() {
 	}
 }
 
-void Paddle::fixedUpdate() {
+void Paddle::updateObject() {
 	mShape.setPosition(mPosition);
 }
