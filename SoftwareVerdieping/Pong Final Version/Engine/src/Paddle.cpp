@@ -2,7 +2,7 @@
 
 Paddle::Paddle(float startX, float startY)
 : mPosition(startX, startY),
-mShape(sf::Vector2f(10, 100)),
+mShape(sf::Vector2f(20, 60)),
 paddleSpeed(5) {
 	// set the position of the paddle
 	mShape.setPosition(mPosition);
@@ -13,11 +13,15 @@ sf::RectangleShape Paddle::getShape() const {
 }
 
 void Paddle::moveUp() {
-	mPosition.y -= paddleSpeed;
+	if (mPosition.y > 0) {
+		mPosition.y -= paddleSpeed;
+	}
 }
 
 void Paddle::moveDown() {
-	mPosition.y += paddleSpeed;
+	if (mPosition.y + mShape.getSize().y < 600) {
+		mPosition.y += paddleSpeed;
+	}
 }
 
 void Paddle::fixedUpdate() {

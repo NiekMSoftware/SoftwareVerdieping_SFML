@@ -1,9 +1,9 @@
 #include "Ball.h"
 
 Ball::Ball(float startX, float startY)
-: xVelocity(1.3f),
-yVelocity(1.3f),
-maxVelocity(12.f) {
+: xVelocity(2.f),
+yVelocity(2.f),
+maxVelocity(50.f) {
 	// initialise position
 	mPosition.x = startX;
 	mPosition.y = startY;
@@ -21,6 +21,17 @@ void Ball::fixedUpdate() {
 	// add velocity to the ball's relative position
 	mPosition.x += xVelocity;
 	mPosition.y += yVelocity;
+
+	// check for boundaries and correct velocity
+	if (mPosition.y < 0) {
+		mPosition.y = 0;
+		yVelocity = -yVelocity;
+	}
+
+	if (mPosition.y + mShape.getRadius() * 2 > 600) {
+		mPosition.y = 600 - mShape.getRadius() * 2;
+		yVelocity = -yVelocity;
+	}
 
 	// clamp the max velocity
 	if (xVelocity > maxVelocity) xVelocity = maxVelocity;
@@ -40,9 +51,9 @@ void Ball::reboundBatOrTop()
 {
 	xVelocity = -xVelocity;
 	if (xVelocity < 0)
-		xVelocity -= 0.3f;
+		xVelocity -= 0.6f;
 	else
-		xVelocity += 0.3f;
+		xVelocity += 0.6f;
 }
 
 void Ball::reset(float startX, float startY)
@@ -53,6 +64,6 @@ void Ball::reset(float startX, float startY)
 	mShape.setPosition(mPosition);
 
 	// reset velocity
-	xVelocity = 1.3f;
-	yVelocity = 1.3f;
+	xVelocity = 2.f;
+	yVelocity = 2.f;
 }

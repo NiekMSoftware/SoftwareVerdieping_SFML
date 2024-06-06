@@ -25,8 +25,6 @@ bool GameState::Update(sf::Time dt) {
 	if (mIsPaused)
 		return false;
 
-	handleBallCollision();
-
 	// once either players have 5 points, stop the game
 	if (mPlayerOneScore >= 5 || mPlayerTwoScore >= 5) {
 		RequestStackPop();
@@ -52,6 +50,8 @@ bool GameState::FixedUpdate(sf::Time fixedDt) {
 	// update players
 	mPlayer1.fixedUpdate();
 	mPlayer2.fixedUpdate();
+
+	handleBallCollision();
 
 	// update ball
 	mBall.fixedUpdate();
@@ -107,15 +107,33 @@ void GameState::HandlePlayerInput(sf::Keyboard::Key key, bool isPressed) {
 
 void GameState::handleBallCollision()
 {
-	if (mBall.getShape().getGlobalBounds().intersects(mPlayer1.getShape().getGlobalBounds()) ||
-		mBall.getShape().getGlobalBounds().intersects(mPlayer2.getShape().getGlobalBounds())) {
+	// Handle collision with paddles
+	if (mBall.getShape().getGlobalBounds().intersects(mPlayer1.getShape().getGlobalBounds())) {
 		mBall.reboundBatOrTop();
+		mBall.fixedUpdate();
+
+		// reset the ball if it gets stuck
+		if (mBall.getShape().getGlobalBounds().intersects(mPlayer1.getShape().getGlobalBounds())) {
+			mBall.reset(mPlayer1.getShape().getPosition().x + mPlayer1.getShape().getSize().x + mBall.getShape().getRadius(), mBall.getShape().getPosition().y);
+		}
 	}
 
+	if (mBall.getShape().getGlobalBounds().intersects(mPlayer2.getShape().getGlobalBounds())) {
+		mBall.reboundBatOrTop();
+		mBall.fixedUpdate();
+
+		// reset the ball if it gets stuck
+		if (mBall.getShape().getGlobalBounds().intersects(mPlayer2.getShape().getGlobalBounds())) {
+			mBall.reset(mPlayer2.getShape().getPosition().x - mBall.getShape().getRadius() * 2, mBall.getShape().getPosition().y);
+		}
+	}
+
+	// Handle collision with top and bottom
 	if (mBall.getShape().getPosition().y < 0 || mBall.getShape().getPosition().y + mBall.getShape().getRadius() * 2 > 600) {
 		mBall.reboundSides();
 	}
 
+	// Handle scoring
 	if (mBall.getShape().getPosition().x < 0) {
 		mPlayerTwoScore++;
 		mBall.reset(400, 300);
