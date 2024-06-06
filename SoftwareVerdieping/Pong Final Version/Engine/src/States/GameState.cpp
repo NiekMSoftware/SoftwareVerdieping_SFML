@@ -7,7 +7,8 @@ mPlayer1(50, 300, context),
 mPlayer2(740, 300, context),
 mBall(400, 300, context)
 {
-	// get the texture for the paddles.
+	// set the texture of the ball
+	mBall.setTexture(Textures::BIJOU);
 }
 
 void GameState::Draw() const {

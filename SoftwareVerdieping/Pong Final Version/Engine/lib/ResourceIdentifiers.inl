@@ -7,10 +7,10 @@ namespace Textures
 {
 	enum PlayerTextures
 	{
-		DEFAULT,
-		INA,
-		WOMP,
-		TEXTURE_COUNT
+		FUWAWA,
+		BIJOU,
+		NERISSA,
+		SHIORIN
 	};
 
 

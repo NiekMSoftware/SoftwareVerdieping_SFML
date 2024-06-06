@@ -13,7 +13,7 @@ fixedDeltaTime(sf::Time::Zero),
 mStack(State::Context(mWindow, mPlayerTextures, mFontHolder, mPaused))
 {
 	// enable vsync
-	mWindow.setFramerateLimit(50);
+	mWindow.setFramerateLimit(60);
 
 	LoadResources();
 	RegisterStates();
@@ -24,7 +24,11 @@ mStack(State::Context(mWindow, mPlayerTextures, mFontHolder, mPaused))
 
 void Application::LoadResources()
 {
+	// load in font
 	mFontHolder.Load(Fonts::DEFAULT_FONT, "Engine/assets/fonts/default_font.ttf");
+
+	// load in textures
+	mPlayerTextures.Load(Textures::BIJOU, "Engine/assets/textures/koseki_bijou.png");
 }
 
 void Application::RegisterStates()
