@@ -167,20 +167,18 @@
     <ClInclude Include="Engine\lib\States\State.hpp" />
     <ClInclude Include="Engine\lib\States\StateStack.hpp" />
     <ClInclude Include="Engine\lib\States\TitleState.h" />
+    <ClInclude Include="Engine\lib\Utility.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\lib\ResourceIdentifiers.inl" />
     <None Include="Engine\lib\States\StateIdentifiers.inl" />
   </ItemGroup>
   <ItemGroup>
+    <Font Include="Engine\assets\fonts\default_bold.ttf" />
     <Font Include="Engine\assets\fonts\default_font.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Engine\assets\textures\fuwawa.png" />
     <Image Include="Engine\assets\textures\koseki_bijou.png" />
-    <Image Include="Engine\assets\textures\nerissa_weirdChamp.png" />
-    <Image Include="Engine\assets\textures\newissa_wavencwoft.png" />
-    <Image Include="Engine\assets\textures\shiorin.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

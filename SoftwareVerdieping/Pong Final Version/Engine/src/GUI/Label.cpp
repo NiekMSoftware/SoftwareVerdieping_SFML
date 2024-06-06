@@ -3,8 +3,11 @@
 namespace GUI
 {
 	Label::Label(const std::string& text, const FontHolder& fonts)
-		: mText(text, fonts.get(Fonts::DEFAULT_FONT), 16)
-	{ }
+	: mText(text, fonts.get(Fonts::DEFAULT_FONT), 16)
+	{
+		mText.setOutlineColor(sf::Color::Black);
+		mText.setOutlineThickness(1.f);
+	}
 
 	bool Label::IsSelectable() const
 	{
@@ -24,6 +27,11 @@ namespace GUI
 	void Label::SetSize(unsigned int size)
 	{
 		mText.setCharacterSize(size);
+	}
+
+	void Label::SetFont(const FontHolder& fonts, Fonts::Fonts id)
+	{
+		mText.setFont(fonts.get(id));
 	}
 
 	void Label::HandleEvent(const sf::Event& event)

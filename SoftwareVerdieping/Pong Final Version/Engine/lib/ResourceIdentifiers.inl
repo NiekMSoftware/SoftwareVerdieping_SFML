@@ -20,7 +20,8 @@ namespace Fonts
 {
 	enum Fonts
 	{
-		DEFAULT_FONT
+		DEFAULT_FONT,
+		DEFAULT_BOLD
 	};
 }
 

@@ -29,6 +29,7 @@
     <ClInclude Include="Engine\lib\Paddle.h" />
     <ClInclude Include="Engine\lib\Ball.h" />
     <ClInclude Include="Engine\lib\GameObject.hpp" />
+    <ClInclude Include="Engine\lib\Utility.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\lib\ResourceIdentifiers.inl" />
@@ -36,12 +37,9 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="Engine\assets\fonts\default_font.ttf" />
+    <Font Include="Engine\assets\fonts\default_bold.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Engine\assets\textures\fuwawa.png" />
     <Image Include="Engine\assets\textures\koseki_bijou.png" />
-    <Image Include="Engine\assets\textures\nerissa_weirdChamp.png" />
-    <Image Include="Engine\assets\textures\newissa_wavencwoft.png" />
-    <Image Include="Engine\assets\textures\shiorin.png" />
   </ItemGroup>
 </Project>

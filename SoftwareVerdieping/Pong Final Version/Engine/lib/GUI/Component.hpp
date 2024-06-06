@@ -25,7 +25,7 @@ namespace GUI
 		virtual void Deactivate();
 
 		template<typename T>
-		void CenterOrigin(T& object) const; //!< Centers the origin of an object.
+		static void CenterOrigin(T& object); //!< Centers the origin of an object.
 
 		virtual void HandleEvent(const sf::Event& event) = 0;
 
@@ -35,7 +35,7 @@ namespace GUI
 	};
 
 	template <typename T>
-	void Component::CenterOrigin(T& object) const
+	void Component::CenterOrigin(T& object)
 	{
 		sf::FloatRect bounds = object.getLocalBounds();
 		object.setOrigin(bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f);

@@ -19,6 +19,8 @@ namespace GUI
 		sf::Text& GetText();
 		void SetSize(unsigned int size);
 
+		void SetFont(const FontHolder& fonts, Fonts::Fonts id);
+
 		void SetOutlineSize(float thickness);
 		void SetOutlineColor(sf::Color color);
 

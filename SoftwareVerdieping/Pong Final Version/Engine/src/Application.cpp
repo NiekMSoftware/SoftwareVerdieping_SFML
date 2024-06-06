@@ -12,10 +12,19 @@ deltaTime(sf::Time::Zero),
 fixedDeltaTime(sf::Time::Zero),
 mStack(State::Context(mWindow, mPlayerTextures, mFontHolder, mPaused))
 {
-	// enable vsync
+	// set frame rate to 60
 	mWindow.setFramerateLimit(60);
 
 	LoadResources();
+
+	// get the icon
+	sf::Image icon;
+	if (!icon.loadFromFile("Engine/assets/textures/koseki_bijou.png"))
+		throw std::runtime_error("Loading icon failed!");
+
+	// set the icon
+	mWindow.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+
 	RegisterStates();
 
 	mStack.PushState(States::TITLE);
@@ -24,8 +33,9 @@ mStack(State::Context(mWindow, mPlayerTextures, mFontHolder, mPaused))
 
 void Application::LoadResources()
 {
-	// load in font
+	// load in fonts
 	mFontHolder.Load(Fonts::DEFAULT_FONT, "Engine/assets/fonts/default_font.ttf");
+	mFontHolder.Load(Fonts::DEFAULT_BOLD, "Engine/assets/fonts/default_bold.ttf");
 
 	// load in textures
 	mPlayerTextures.Load(Textures::BIJOU, "Engine/assets/textures/koseki_bijou.png");
