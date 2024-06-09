@@ -37,4 +37,6 @@ private:
 
 	GUI::Label mPlayerOneText;
 	GUI::Label mPlayerTwoText;
+
+	int mScoreToBeat;
 };

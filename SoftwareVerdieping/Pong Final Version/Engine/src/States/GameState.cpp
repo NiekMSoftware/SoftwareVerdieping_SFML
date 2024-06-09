@@ -9,7 +9,8 @@ mPlayer1(50, 300, context),
 mPlayer2(740, 300, context),
 mBall(400, 300, context),
 mPlayerOneText(mPlayerOneScore, *context.fonts),
-mPlayerTwoText(mPlayerTwoScore, *context.fonts)
+mPlayerTwoText(mPlayerTwoScore, *context.fonts),
+mScoreToBeat(3)
 {
 	// set the texture of the ball
 	mBall.setTexture(Textures::BIJOU);
@@ -52,12 +53,10 @@ bool GameState::Update(sf::Time dt) {
 	if (mIsPaused)
 		return false;
 
-	// once either players have 3 points, stop the game
-	if (mPlayerOneScore >= 3 || mPlayerTwoScore >= 3) {
+	// end the game once either one of the players has got the required score
+	if (mPlayerOneScore >= mScoreToBeat || mPlayerTwoScore >= mScoreToBeat) {
 		RequestStackPop();
-
-		// TODO: Instead of pushing in the title state, we push in the game over state. Which checks who won and displays it
-		RequestStackPush(States::TITLE);
+		RequestStackPush(States::GAME_OVER);
 	}
 
 	return true;

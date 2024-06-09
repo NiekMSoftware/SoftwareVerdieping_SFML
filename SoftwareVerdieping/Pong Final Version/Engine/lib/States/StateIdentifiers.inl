@@ -6,6 +6,7 @@ namespace States
 	{
 		TITLE,
 		GAME,
-		PAUSE
+		PAUSE,
+		GAME_OVER
 	};
 }

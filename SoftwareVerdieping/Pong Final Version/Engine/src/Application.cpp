@@ -1,6 +1,7 @@
 #include "Application.hpp"
 
 // state inclusion
+#include "States/GameOver.h"
 #include "States/GameState.h"
 #include "States/PauseState.h"
 #include "States/TitleState.h"
@@ -47,6 +48,7 @@ void Application::RegisterStates()
 	mStack.RegisterState<TitleState>(States::TITLE);
 	mStack.RegisterState<GameState>(States::GAME);
 	mStack.RegisterState<PauseState>(States::PAUSE);
+	mStack.RegisterState<GameOver>(States::GAME_OVER);
 }
 
 void Application::CalculateDeltaTimes()

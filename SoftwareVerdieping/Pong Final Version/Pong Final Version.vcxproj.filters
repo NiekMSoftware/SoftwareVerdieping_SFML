@@ -14,6 +14,7 @@
     <ClCompile Include="Engine\src\Paddle.cpp" />
     <ClCompile Include="Engine\src\Ball.cpp" />
     <ClCompile Include="Engine\src\GameObject.cpp" />
+    <ClCompile Include="Engine\src\States\GameOver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\lib\Application.hpp" />
@@ -30,6 +31,7 @@
     <ClInclude Include="Engine\lib\Ball.h" />
     <ClInclude Include="Engine\lib\GameObject.hpp" />
     <ClInclude Include="Engine\lib\Utility.hpp" />
+    <ClInclude Include="Engine\lib\States\GameOver.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\lib\ResourceIdentifiers.inl" />
