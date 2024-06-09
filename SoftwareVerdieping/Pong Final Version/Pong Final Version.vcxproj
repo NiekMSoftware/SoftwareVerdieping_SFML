@@ -145,6 +145,7 @@
     <ClCompile Include="Engine\src\GUI\Container.cpp" />
     <ClCompile Include="Engine\src\GUI\Label.cpp" />
     <ClCompile Include="Engine\src\Paddle.cpp" />
+    <ClCompile Include="Engine\src\States\GameOver.cpp" />
     <ClCompile Include="Engine\src\States\PauseState.cpp" />
     <ClCompile Include="Engine\src\Application.cpp" />
     <ClCompile Include="Engine\src\States\GameState.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Engine\lib\GUI\Label.hpp" />
     <ClInclude Include="Engine\lib\Paddle.h" />
     <ClInclude Include="Engine\lib\ResourceHolder.hpp" />
+    <ClInclude Include="Engine\lib\States\GameOver.h" />
     <ClInclude Include="Engine\lib\States\GameState.h" />
     <ClInclude Include="Engine\lib\States\PauseState.h" />
     <ClInclude Include="Engine\lib\States\State.hpp" />
